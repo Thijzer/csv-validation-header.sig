@@ -21,4 +21,10 @@ class ArrayUnflattenModifier implements RowModifier, OptionsInterface
     {
         return ArrayFunctions::unflatten($item, $this->options['separator']);
     }
+
+    /** @inheritDoc */
+    public function reverseModify(array $item): array
+    {
+        return ArrayFunctions::flatten($item, $this->options['separator']);
+    }
 }

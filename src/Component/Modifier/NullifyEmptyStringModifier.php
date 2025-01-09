@@ -10,12 +10,24 @@ class NullifyEmptyStringModifier implements RowModifier
 
     public function modify($value)
     {
-        if(\is_array($value)) {
+        if (\is_array($value)) {
             return array_map(function ($row) {
                 return $this->modify($row);
             }, $value);
         }
 
         return '' === $value ? null : $value;
+    }
+
+    /** @inheritDoc */
+    public function reverseModify($value)
+    {
+        if (\is_array($value)) {
+            return array_map(function ($row) {
+                return $this->reverseModify($row);
+            }, $value);
+        }
+
+        return is_null($value) ? '' : $value;
     }
 }

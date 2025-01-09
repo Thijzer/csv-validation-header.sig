@@ -1,0 +1,12 @@
+property:
+  code:
+    unique: ~
+  type:
+    required: ~
+    reference_exist:
+      file: group_types
+      id: code
+  label:
+    reference_exist:
+      file: enabled_locales
+      id: code

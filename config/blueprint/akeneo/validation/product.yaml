@@ -1,0 +1,19 @@
+property:
+  sku:
+    unique: ~
+  parent:
+    elem_exist:
+      file: product_models
+      id: code
+  family:
+    elem_exist:
+      file: families
+      id: code
+row:
+  attributes:
+    akeneo_scope: ~
+      source:
+        name: attributes
+      context:
+        - localizable
+        - scopable

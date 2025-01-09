@@ -1,0 +1,20 @@
+encode:
+  record_code:
+    string: ~
+  entity_code:
+    string: ~
+  image:
+    string: ~
+
+parse:
+  type: csv
+  unflatten:
+    separator: '-'
+  nullify: ~
+  reference: record_code
+  format:
+    delimiter: ';'
+    enclosure: '"'
+
+validations:
+  include: 'validation/reference_entity.yaml'

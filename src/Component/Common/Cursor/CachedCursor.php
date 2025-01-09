@@ -4,9 +4,11 @@ namespace Misery\Component\Common\Cursor;
 
 class CachedCursor implements CursorInterface
 {
+    # larger caches might break the memory limit so be alert
     const SMALL_CACHE_SIZE = 1000;
     const MEDIUM_CACHE_SIZE = 5000;
     const LARGE_CACHE_SIZE = 10000;
+    const EXTRA_LARGE_CACHE_SIZE = 50000;
 
     /** @var int|mixed */
     private $position = 0;
@@ -48,8 +50,8 @@ class CachedCursor implements CursorInterface
      */
     public function getIterator(): \Generator
     {
-        while ($this->valid()) {
-            yield $this->key() => $this->current();
+        while ($item = $this->current()) {
+            yield $this->key() => $item;
             $this->next();
         }
         $this->rewind();
@@ -58,7 +60,7 @@ class CachedCursor implements CursorInterface
     /**
      * {@inheritDoc}
      */
-    public function current()
+    public function current(): mixed
     {
         $this->prefetch($this->position);
 
@@ -67,7 +69,7 @@ class CachedCursor implements CursorInterface
 
     /**
      * Cursor is not rewind
-     * so it could keep fetches in chuncks without reset
+     * so it could keep fetches in chunks without reset
      * @param int $i position
      */
     private function prefetch(int $i): void
@@ -98,7 +100,7 @@ class CachedCursor implements CursorInterface
     /**
      * {@inheritDoc}
      */
-    public function key()
+    public function key(): mixed
     {
         return $this->position;
     }
@@ -144,5 +146,6 @@ class CachedCursor implements CursorInterface
         $this->items = [];
         $this->range = [];
         $this->rewind();
+        $this->cursor->clear();
     }
 }

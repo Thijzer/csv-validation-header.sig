@@ -1,0 +1,18 @@
+encode:
+  code:
+    string: ~
+  name:
+    string: ~
+
+parse:
+  type: csv
+  unflatten:
+    separator: '-'
+  nullify: ~
+  reference: code
+  format:
+    delimiter: ';'
+    enclosure: '"'
+
+validations:
+  include: 'validation/user_group.yaml'

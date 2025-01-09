@@ -1,0 +1,6 @@
+property:
+  code:
+    unique:
+  label:
+    reference_exit:
+      - enabled_locales

@@ -1,0 +1,26 @@
+encode:
+  code:
+    string: ~
+  family:
+    string: ~
+  variant-axes_1:
+    list: ~
+  variant-axes_2:
+    list: ~
+  variant-attributes_1:
+    list: ~
+  variant-attributes_2:
+    list: ~
+
+parse:
+  type: csv
+  unflatten:
+    separator: '-'
+  nullify: ~
+  reference: code
+  format:
+    delimiter: ';'
+    enclosure: '"'
+
+validations:
+  include: 'validation/family_variant.yaml'

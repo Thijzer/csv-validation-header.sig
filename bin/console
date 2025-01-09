@@ -1,0 +1,20 @@
+<?php
+
+require_once __DIR__.'/../vendor/autoload.php';
+
+require_once __DIR__.'/../src/bootstrap.php';
+
+$_SERVER['DOCUMENT_ROOT'] = realpath(__DIR__.'/../');
+
+$app = new Ahc\Cli\Application('trans', 'v0.0.1');
+
+$app->add(new \Misery\Command\CompareCommand());
+$app->add(new \Misery\Command\TransformationCommand());
+
+$app->logo('
+╔╦╗╦═╗╔═╗╔╗╔╔═╗
+ ║ ╠╦╝╠═╣║║║╚═╗
+ ╩ ╩╚═╩ ╩╝╚╝╚═╝
+');
+
+$app->handle($_SERVER['argv']);

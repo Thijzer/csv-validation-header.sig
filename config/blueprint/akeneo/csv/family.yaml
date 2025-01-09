@@ -1,0 +1,38 @@
+encode:
+  code:
+    string: ~
+  attributes:
+    list: ~
+  attribute_as_image:
+    string: ~
+  attribute_as_label:
+    string: ~
+
+rows:
+  unflatten:
+    separator: '-'
+  nullify: ~
+
+format:
+  delimiter: ';'
+  enclosure: '"'
+  index: 'code'
+
+parse:
+  type: csv
+  unflatten:
+    separator: '-'
+  nullify: ~
+  reference: code
+  format:
+    delimiter: ';'
+    enclosure: '"'
+
+filenames:
+  - family.csv
+  - families.csv
+  - akeneo_family.csv
+  - akeneo_families.csv
+
+validations:
+  include: 'validation/family.yaml'

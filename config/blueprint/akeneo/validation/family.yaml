@@ -1,0 +1,9 @@
+property:
+  code:
+    unique: ~
+  label:
+    reference_exist:
+      file: enabled_locales
+  requirements:
+    reference_exist:
+      file: channels

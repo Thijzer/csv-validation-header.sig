@@ -2,6 +2,9 @@
 
 namespace Misery\Component\Reader;
 
+use Misery\Component\Common\Cursor\CursorInterface;
+use Misery\Component\Common\Cursor\ItemCursor;
+
 class ItemReader implements ItemReaderInterface
 {
     private $cursor;
@@ -15,6 +18,10 @@ class ItemReader implements ItemReaderInterface
     public function read()
     {
         $item = $this->cursor->current();
+        if ($item === false) {
+            return false;
+        }
+
         $this->cursor->next();
 
         return $item;
@@ -46,16 +53,59 @@ class ItemReader implements ItemReaderInterface
             $this->cursor->next();
         }
 
-        // @TODO throw outofboudexception
+        // @TODO throw outofboundexception
+    }
+
+    public function filterByList(array $constraint): ReaderInterface
+    {
+        $reader = $this;
+        $columnName = $constraint['field'];
+        $list = $constraint['list'];
+
+        $reader = $reader->filter(static function ($row) use ($columnName, $list) {
+            return in_array($row[$columnName], $list);
+        });
+
+        return $reader;
     }
 
     public function find(array $constraints): ReaderInterface
     {
         $reader = $this;
         foreach ($constraints as $columnName => $rowValue) {
-            $reader = $reader->filter(static function ($row) use ($rowValue, $columnName) {
-                return $row[$columnName] === $rowValue;
-            });
+            if (is_array($rowValue)) {
+                $reader = $reader->filter(static function ($row) use ($rowValue, $columnName) {
+                    return in_array($row[$columnName], $rowValue);
+                });
+            } elseif (is_string($rowValue) && in_array($rowValue, ['UNIQUE', 'IS_NOT_NUMERIC', 'NOT_EMPTY', 'NOT_NULL'])) {
+                if ($rowValue === 'UNIQUE') {
+                    $list = [];
+                    $reader = $reader->filter(static function ($row) use ($columnName, &$list) {
+                        $id = $row[$columnName];
+                        if (in_array($id, $list, true)) {
+                            return false;
+                        }
+                        $list[] = $id;
+                        return true;
+                    });
+                } elseif ($rowValue === 'IS_NOT_NUMERIC') {
+                    $reader = $reader->filter(static function ($row) use ($columnName) {
+                        return !is_numeric($row[$columnName]);
+                    });
+                } elseif ($rowValue === 'NOT_EMPTY') {
+                    $reader = $reader->filter(static function ($row) use ($columnName) {
+                        return !empty($row[$columnName]);
+                    });
+                } elseif ($rowValue === 'NOT_NULL') {
+                    $reader = $reader->filter(static function ($row) use ($columnName) {
+                        return false === ($row[$columnName] === NULL);
+                    });
+                }
+            } else {
+                $reader = $reader->filter(static function ($row) use ($rowValue, $columnName) {
+                    return $row[$columnName] === $rowValue;
+                });
+            }
         }
 
         return $reader;
@@ -83,13 +133,27 @@ class ItemReader implements ItemReaderInterface
     private function processMap(callable $callable): \Generator
     {
         foreach ($this->getIterator() as $key => $row) {
-            yield $key => $callable($row);
+            if (is_array($row)) {
+                yield $key => $callable($row);
+            }
         }
+    }
+
+    public function getCursor(): CursorInterface
+    {
+        return new ItemCursor($this);
     }
 
     public function getIterator(): \Iterator
     {
         return $this->cursor;
+    }
+
+    public function clear(): void
+    {
+        if ($this->cursor instanceof CursorInterface) {
+            $this->cursor->clear();
+        }
     }
 
     public function getItems(): array

@@ -1,0 +1,22 @@
+columns:
+  code:
+    int: ~
+  family_variant:
+    string: ~
+  parent:
+    string: ~
+  categories:
+    list: ~
+
+parse:
+  type: csv
+  unflatten:
+    separator: '-'
+  nullify: ~
+  reference: code
+  format:
+    delimiter: ';'
+    enclosure: '"'
+
+validations:
+  include: 'validation/product_model.yaml'

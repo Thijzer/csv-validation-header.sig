@@ -40,7 +40,7 @@ class Pagination
 
     public function getNbPages(): int
     {
-        return ceil($this->getNbResults() / $this->limit);
+        return (int) ceil($this->getNbResults() / $this->limit);
     }
 
     private function minimumNbPages(): int

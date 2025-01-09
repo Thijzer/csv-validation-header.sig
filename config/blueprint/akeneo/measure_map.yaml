@@ -1,0 +1,180 @@
+Area:
+    standard: SQUARE_METER
+    units:
+        SQUARE_MILLIMETER: mm²
+        SQUARE_CENTIMETER: cm²
+        SQUARE_DECIMETER: dm²
+        SQUARE_METER: m²
+        CENTIARE: ca
+        SQUARE_DEKAMETER: dam²
+        ARE: a
+        SQUARE_HECTOMETER: hm²
+        HECTARE: ha
+        SQUARE_KILOMETER: km²
+        SQUARE_MIL: sq mil
+        SQUARE_INCH: in²
+        SQUARE_FOOT: ft²
+        SQUARE_YARD: yd²
+        ARPENT: arpent
+        ACRE: A
+        SQUARE_FURLONG: fur²
+        SQUARE_MILE: mi²
+Binary:
+    standard: BYTE
+    units:
+        BIT: b
+        BYTE: B
+        KILOBYTE: kB
+        MEGABYTE: MB
+        GIGABYTE: GB
+        TERABYTE: TB
+Decibel:
+    standard: DECIBEL
+    units:
+        DECIBEL: dB
+Frequency:
+    standard: HERTZ
+    units:
+        HERTZ: Hz
+        KILOHERTZ: kHz
+        MEGAHERTZ: MHz
+        GIGAHERTZ: GHz
+        TERAHERTZ: THz
+Length:
+    standard: METER
+    units:
+        MILLIMETER: mm
+        CENTIMETER: cm
+        DECIMETER: dm
+        METER: m
+        DEKAMETER: dam
+        HECTOMETER: hm
+        KILOMETER: km
+        MIL: mil
+        INCH: in
+        FEET: ft
+        YARD: yd
+        CHAIN: ch
+        FURLONG: fur
+        MILE: mi
+Power:
+    standard: WATT
+    units:
+        WATT: W
+        KILOWATT: kW
+        MEGAWATT: MW
+        GIGAWATT: GW
+        TERAWATT: TW
+Voltage:
+    standard: VOLT
+    units:
+        MILLIVOLT: mV
+        CENTIVOLT: cV
+        DECIVOLT: dV
+        VOLT: V
+        DEKAVOLT: daV
+        HECTOVOLT: hV
+        KILOVOLT: kV
+Intensity:
+    standard: AMPERE
+    units:
+        MILLIAMPERE: mA
+        CENTIAMPERE: cA
+        DECIAMPERE: dA
+        AMPERE: A
+        DEKAMPERE: daA
+        HECTOAMPERE: hA
+        KILOAMPERE: kA
+Resistance:
+    standard: OHM
+    units:
+        MILLIOHM: mΩ
+        CENTIOHM: cΩ
+        DECIOHM: dΩ
+        OHM: Ω
+        DEKAOHM: daΩ
+        HECTOHM: hΩ
+        KILOHM: kΩ
+        MEGOHM: MΩ
+Speed:
+    standard: METER_PER_SECOND
+    units:
+        METER_PER_SECOND: mdivs
+        METER_PER_MINUTE: mdivm
+        METER_PER_HOUR: mdivh
+        KILOMETER_PER_HOUR: kmdivh
+        FOOT_PER_SECOND: ftdivs
+        FOOT_PER_HOUR: ftdivh
+        YARD_PER_HOUR: yddivh
+        MILE_PER_HOUR: midivh
+ElectricCharge:
+    standard: AMPEREHOUR
+    units:
+        MILLIAMPEREHOUR: mAh
+        AMPEREHOUR: Ah
+        MILLICOULOMB: mC
+        CENTIOULOMB: cC
+        DECICOULOMB: dC
+        COULOMB: C
+        DEKACOULOMB: daC
+        HECTOCOULOMB: hC
+        KILOCOULOMB: kC
+Duration:
+    standard: SECOND
+    units:
+        MILLISECOND: ms
+        SECOND: s
+        MINUTE: m
+        HOUR: h
+        DAY: d
+Temperature:
+    standard: KELVIN
+    units:
+        CELSIUS: °C
+        FAHRENHEIT: °F
+        KELVIN: °K
+        RANKINE: °R
+        REAUMUR: °r
+Volume:
+    standard: CUBIC_METER
+    units:
+        CUBIC_MILLIMETER: mm³
+        CUBIC_CENTIMETER: cm³
+        MILLILITER: ml
+        CENTILITER: cl
+        DECILITER: dl
+        CUBIC_DECIMETER: dm³
+        LITER: l
+        CUBIC_METER: m³
+        OUNCE: oz
+        PINT: pt
+        BARREL: bbl
+        GALLON: gal
+        CUBIC_FOOT: ft³
+        CUBIC_INCH: in³
+        CUBIC_YARD: yd³
+Weight:
+    standard: KILOGRAM
+    units:
+        MILLIGRAM: mg
+        GRAM: g
+        KILOGRAM: kg
+        TON: t
+        GRAIN: gr
+        DENIER: denier
+        ONCE: once
+        MARC: marc
+        LIVRE: livre
+        OUNCE: oz
+        POUND: lb
+Pressure:
+    standard: BAR
+    units:
+        BAR: Bar
+        PASCAL: Pa
+        HECTOPASCAL: hPa
+        MILLIBAR: mBar
+        ATM: atm
+        PSI: PSI
+        TORR: Torr
+        MMHG: mmHg

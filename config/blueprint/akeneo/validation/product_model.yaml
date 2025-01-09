@@ -1,0 +1,11 @@
+property:
+  code:
+    unique:
+  parent:
+    elem_exist:
+      file: product_models
+      id: code
+  family_variant:
+    elem_exist:
+      file: family_variants
+      id: code

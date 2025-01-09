@@ -1,0 +1,66 @@
+encode:
+  code:
+    string: ~
+  allowed_extensions:
+    list: ~
+  auto_option_sorting:
+    string: ~
+  available_locales:
+    list: ~
+  date_max:
+    string: ~
+  date_min:
+    string: ~
+  decimals_allowed:
+    boolean: ~
+  default_metric_unit:
+    string: ~
+  group:
+    string: ~
+  localizable:
+    boolean: ~
+  scopable:
+    boolean: ~
+  max_characters:
+    integer: ~
+  max_file_size:
+    integer: ~
+  metric_family:
+    string: ~
+  minimum_input_length:
+    integer: ~
+  negative_allowed:
+    boolean: ~
+  number_max:
+    integer: ~
+  number_min:
+    integer: ~
+  reference_data_name:
+    string: ~
+  sort_order:
+    integer: ~
+  type:
+    list: ~
+  unique:
+    boolean: ~
+  useable_as_grid_filter:
+    boolean: ~
+  validation_regexp:
+    string: ~
+  validation_rule:
+    string: ~
+  wysiwyg_enabled:
+    boolean: ~
+
+parse:
+  type: csv
+  unflatten:
+    separator: '-'
+  nullify: ~
+  reference: code
+  format:
+    delimiter: ';'
+    enclosure: '"'
+
+validations:
+  include: 'validation/attribute.yaml'

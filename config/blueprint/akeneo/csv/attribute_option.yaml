@@ -1,0 +1,20 @@
+enode:
+  code:
+    string: ~
+  attribute:
+    string: ~
+  sort_order:
+    integer: ~
+
+parse:
+  type: csv
+  unflatten:
+    separator: '-'
+  nullify: ~
+  reference: ['code', 'attribute']
+  format:
+    delimiter: ';'
+    enclosure: '"'
+
+validations:
+  include: 'validation/attribute_option.yaml'

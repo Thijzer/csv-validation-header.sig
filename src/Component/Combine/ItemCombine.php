@@ -14,10 +14,8 @@ class ItemCombine
 
     public function combineInto(CursorInterface $cursorA, CursorInterface $cursorB, string $reference, callable $call): void
     {
-        $csvCompare = new ItemCompare(
-            $readerA = new ItemReader($cursorA),
-            $readerB = new ItemReader($cursorB)
-        );
+        $readerB = new ItemReader($cursorB);
+        $csvCompare = new ItemCompare($cursorA, $cursorB);
 
         $differences = $csvCompare->compare($reference);
 

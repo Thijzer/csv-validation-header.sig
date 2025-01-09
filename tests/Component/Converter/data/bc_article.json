@@ -1,0 +1,72 @@
+{
+  "@odata.etag": "W\/\"JzIwOzEyMTAyMjIzMTI4MDAxNzQ4MDI3MTswMDsn\"",
+  "id": "37e78da7-dbeb-ed11-9f71-002248a3d52c",
+  "number": "1001000023",
+  "unitPrice": 73.6,
+  "tariffNumber": "84145100",
+  "leadTimeCalculation": "2W",
+  "gtin": "5015135451622",
+  "blocked": false,
+  "lastModifiedDateTime": "2024-09-13T06:22:23.62Z",
+  "itemtranslations": [{
+    "@odata.etag": "W\/\"JzIwOzE1MDc0Mzk3NjkzMjk3MjEyMDAzMTswMDsn\"",
+    "id": "1b32d7a5-dbeb-ed11-9f71-002248a3d52c",
+    "description": "Silhouette 125T \/ Extracteur pr SDB-WC Tempo",
+    "typeName": "Silhouette 125T",
+    "itemDescriptionERP": "Extracteur pr SDB-WC Tempo",
+    "lastModifiedDateTime": "2024-02-02T12:34:41.857Z"
+  }, {
+    "@odata.etag": "W\/\"JzE5OzczNzk0ODU3ODUxNTgyMjM2MTgxOzAwOyc=\"",
+    "id": "1c32d7a5-dbeb-ed11-9f71-002248a3d52c",
+    "description": "Silhouette 125T \/ Badkamerventilator met timer",
+    "typeName": "Silhouette 125T",
+    "itemDescriptionERP": "Badkamerventilator met timer",
+    "lastModifiedDateTime": "0001-01-01T00:00:00Z"
+  }],
+  "itemreferences": [{
+    "@odata.etag": "W\/\"JzE5Ozk3NjEwMDY4MjY3NTE0OTA3MDQxOzAwOyc=\"",
+    "id": "f23e41a2-dbeb-ed11-9f71-002248a3d52c",
+    "lastModifiedDateTime": "2023-05-06T09:14:11.973Z",
+    "referenceNumber": "1001000023"
+  }, {
+    "@odata.etag": "W\/\"JzE5OzczMzY3NzU1ODI1NjcxOTYzMTgxOzAwOyc=\"",
+    "id": "f33e41a2-dbeb-ed11-9f71-002248a3d52c",
+    "lastModifiedDateTime": "2023-05-06T09:14:11.977Z",
+    "referenceNumber": "5015135451622"
+  }],
+  "itemUnitOfMeasuresColli": [],
+  "itemUnitOfMeasuresPallet": [],
+  "itemUnitOfMeasuresPieces": [{
+    "@odata.etag": "W\/\"JzE5OzIzNzIwMDk0ODc4OTg0Mjg5MTUxOzAwOyc=\"",
+    "id": "e9d8f2a6-dbeb-ed11-9f71-002248a3d52c",
+    "lastModifiedDateTime": "2024-09-19T12:41:38.933Z",
+    "height": 0,
+    "length": 0,
+    "weight": 0.9,
+    "width": 0
+  }],
+  "itemCategories": [{
+    "@odata.etag": "W\/\"JzE4OzQ3NDAwMTc1MzU4NTA3NzI1NzE7MDA7Jw==\"",
+    "id": "763e41a2-dbeb-ed11-9f71-002248a3d52c",
+    "lastModifiedDateTime": "2024-04-15T08:51:33.4Z",
+    "code": "1001",
+    "description": "Residential individual fans without heat recovery",
+    "hasChildren": true,
+    "indentation": 1,
+    "parentCategory": "10",
+    "presentationOrder": 20000
+  }],
+  "itemContributions": [{
+    "@odata.etag": "W\/\"JzE5Ozk1MTI5MDAyMDIyNjI3OTA1MzQxOzAwOyc=\"",
+    "id": "d3265afa-0c4f-ef11-bfe4-7c1e52213fce",
+    "lastModifiedDateTime": "2024-07-31T07:17:44.067Z",
+    "itemNo": "1001000023",
+    "variantCode": "",
+    "typeCode": "RECUPEL",
+    "categoryCode": "5.3.2",
+    "baseUnitOfMeasure": "PCS",
+    "noOfCorrespondingTariffs": 1,
+    "quantityCalculationType": "Base_x0020_Unit_x0020_of_x0020_Measure",
+    "quantityFactor": 1
+  }]
+}

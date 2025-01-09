@@ -1,0 +1,17 @@
+encode:
+  role:
+    string: ~
+  label: ~
+
+parse:
+  type: csv
+  unflatten:
+    separator: '-'
+  nullify: ~
+  reference: role
+  format:
+    delimiter: ';'
+    enclosure: '"'
+
+validations:
+  include: 'validation/user_role.yaml'

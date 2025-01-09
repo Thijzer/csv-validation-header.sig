@@ -1,0 +1,12 @@
+pipeline:
+  input:
+    http:
+      type: rest_api
+      account: '%akeneo_read_connection%'
+      endpoint: '%endpoint%'
+      method: GET
+  output:
+    writer:
+      type: csv
+      filename: 'akeneo_%endpoint%.csv'
+      converter: 'akeneo/%endpoint%/csv'

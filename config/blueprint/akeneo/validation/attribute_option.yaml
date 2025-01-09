@@ -1,0 +1,8 @@
+property:
+  attribute:
+    reference_exist:
+      file: attributes
+      id: code
+  sort_order:
+    required: ~
+    is_integer: ~
