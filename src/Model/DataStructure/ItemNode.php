@@ -12,19 +12,19 @@ class ItemNode implements ItemNodeInterface
 
     public function __construct(private readonly string $code, private $value, private readonly AkeneoScope $scope)
     {
-        $this->matcher = Matcher::create($this->code, $this->scope->getLocale(), $this->scope->getChannel());
-        if ($this->matcher->isProperty()) {
-            $this->type = 'property';
-        }
-
-        // when dealing with an array, we expect the 'data' property
+        // when dealing with an array with 'data' property
         if (is_array($this->value) && array_key_exists('data', $this->value)) {
 
             $this->type = $this->value['type'] ?? 'generic';
-
             if (isset($this->value['matcher']) && $this->value['matcher'] instanceof Matcher) {
                 $this->matcher = $this->value['matcher'];
             }
+            return;
+        }
+
+        $this->matcher = Matcher::create($this->code, $this->scope->getLocale(), $this->scope->getChannel());
+        if ($this->matcher->isProperty()) {
+            $this->type = 'property';
         }
     }
 
@@ -80,6 +80,6 @@ class ItemNode implements ItemNodeInterface
 
     public function getDataValue()
     {
-        return $this->value['data'] ?? $this->value ?? null;
+        return array_key_exists('data', $this->value) ? $this->value['data'] : $this->value ?? null;
     }
 }

@@ -77,6 +77,7 @@ class Item implements ItemInterface
     public function moveItem(string $fromCode, string $toCode): void
     {
         $this->copyItem($fromCode, $toCode);
+
         $this->removeItem($fromCode);
     }
 
@@ -100,6 +101,11 @@ class Item implements ItemInterface
      */
     public function removeItem(string $code): void
     {
+        $code = $this->getItem($code)?->getCode();
+        if (!$code) {
+            return;
+        }
+
         if ($this->hasItem($code)) {
             unset($this->itemNodes[$code]);
         }
