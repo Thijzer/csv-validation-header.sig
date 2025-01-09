@@ -9,6 +9,7 @@ class ItemNode implements ItemNodeInterface
 {
     private Matcher $matcher;
     private string $type = 'generic';
+    private string $dataValueType = 'unknown';
 
     public function __construct(private readonly string $code, private $value, private readonly AkeneoScope $scope)
     {
@@ -16,6 +17,7 @@ class ItemNode implements ItemNodeInterface
         if (is_array($this->value) && array_key_exists('data', $this->value)) {
 
             $this->type = $this->value['type'] ?? 'generic';
+                $this->dataValueType = 'akeneo';
             if (isset($this->value['matcher']) && $this->value['matcher'] instanceof Matcher) {
                 $this->matcher = $this->value['matcher'];
             }
@@ -80,6 +82,6 @@ class ItemNode implements ItemNodeInterface
 
     public function getDataValue()
     {
-        return array_key_exists('data', $this->value) ? $this->value['data'] : $this->value ?? null;
+        return $this->dataValueType === 'akeneo' ? $this->value['data'] : $this->value ?? null;
     }
 }
