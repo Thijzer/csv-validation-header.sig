@@ -1,14 +1,10 @@
-version: '2'
-
 services:
   fpm:
+    build: ./docker/fpm
+    working_dir: '/app'
     user: 1000:1000
-    image: thijs/php:alpine-php-7.4
     volumes:
       - './:/app'
       - ~/.composer:/.composer
-    working_dir: '/app'
     environment:
       COMPOSER_HOME: '/.composer'
-#  redis:
-#    image: redis

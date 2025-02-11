@@ -1,0 +1,15 @@
+pipeline:
+  input:
+    http:
+      type: rest_api
+      account: '%akeneo_read_connection%'
+      endpoint: '%endpoint%'
+      method: GET
+  actions:
+    remove_unwanted:
+      action: retain
+      keys: [ identifier, code ]
+  output:
+    writer:
+      type: csv
+      filename: 'akeneo_%endpoint%_identifiers.csv'

@@ -1,0 +1,14 @@
+sources:
+  - '%workpath%/akeneo_%endpoint%.jsonl'
+
+pipeline:
+  input:
+    reader:
+      type: jsonl
+      filename: '%workpath%/akeneo_%endpoint%.jsonl'
+  output:
+    http:
+      type: rest_api
+      account: '%akeneo_write_connection%'
+      endpoint: '%endpoint%'
+      method: MULTI_PATCH

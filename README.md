@@ -1,24 +1,70 @@
-[![Build Status](https://travis-ci.org/Thijzer/csv-validation-header.wip.svg?branch=master)](https://travis-ci.org/Thijzer/csv-validation-header.wip)
+# Introduction
 
-# Item processor
+## Installation
 
-## require this into your project 
-```shell script
-composer require thijzer/csv-validation-header
+```bash
+bin/docker/composer install
 ```
 
-## Documentation
-You can find the documentation in the `/docs` directory.
+## Configuration
 
-## Development
+Some transformation files depend on API credentials that are not stored inside the transformations.
 
-### Before you start
-This branch is using docker for development.
-```shell script
-alias d_composer="docker-compose exec fpm php -d memory_limit=-1 /usr/bin/composer $1"
+You can add these directives on your main-STEP or the transformation you are working on.
+
+In this example "my-account" is used as the account name accross all transformations
+```yaml
+account:
+   name: "my-account"
+   username: "my-username"
+   password: "my-password"
+   domain: "my-domain"
+   client_id: "my-client-id"
+   client_secret: "my-client-secret"
 ```
-### Installation and testing for development
-```shell script
-d_composer install -o 
-d_composer test 
+
+You could also add context parameters to your transformation file the same way
+```yaml
+context:
+    my-parameter: "my-value"
+```
+
+## Usage
+
+Discover all options
+```bash
+bin/docker/console transformation --help
+```
+
+Here is a minimal example of a transformation file:
+# Transform a file
+```bash
+bin/docker/console transformation --file example/project/transformations/transformation.yaml --source example/project/source --workpath example/project/workpath
+```
+
+### Debugging
+
+Debug the first item that would be written
+```bash
+bin/docker/console transformation --file ... --source ... --workpath ... --debug
+```
+
+try the first 100 items
+```bash
+bin/docker/console transformation --file ... --source ... --workpath ... --try 100
+```
+
+In case you have dynamic mappings, you can show the mappings that would be used
+```bash
+bin/docker/console transformation --file ... --source ... --workpath ... --showMappings
+```
+
+Write only this line, skip the rest
+```bash
+bin/docker/console transformation --file ... --source ... --workpath ... --line 100
+```
+
+Write only this line, skip the rest
+```bash
+bin/docker/console transformation --file ... --source ... --workpath ... --line 100
 ```

@@ -1,0 +1,18 @@
+columns:
+  code:
+    string: ~
+  sort_order:
+    integer: ~
+
+parse:
+  type: csv
+  unflatten:
+    separator: '-'
+  nullify: ~
+  reference: code
+  format:
+    delimiter: ';'
+    enclosure: '"'
+
+validations:
+  include: 'validation/attribute_group.yaml'

@@ -1,0 +1,37 @@
+encode:
+  sku:
+    string: ~
+  categories:
+    list: ~
+  enabled:
+    boolean: ~
+  family:
+    string: ~
+  parent:
+    string: ~
+  groups:
+    list: ~
+
+list:
+  - name: 'attribute_code_and_types'
+    source: attribute.csv
+    source_command: key_value_pair
+    options:
+      key: code
+      value: type
+
+converter:
+  name: 'akeneo/product/csv'
+  options:
+    list: 'attribute_code_and_types'
+
+reader:
+  type: csv
+  reference: sku
+  filename_match: product.csv
+  format:
+    delimiter: ';'
+    enclosure: '"'
+
+validations:
+  include: 'validation/product.yaml'

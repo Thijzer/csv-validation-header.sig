@@ -1,0 +1,7 @@
+property:
+  code:
+    unique:
+  parent:
+    reference_exist:
+      file: categories
+      id: code

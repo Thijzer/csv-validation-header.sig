@@ -1,0 +1,12 @@
+property:
+  code:
+    unique:
+  currencies:
+#    reference_exist:
+#      file: currencies
+#      id: code
+#      filter:
+#        activated: true
+    required:
+  tree:
+    required:

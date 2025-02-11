@@ -1,3 +1,5 @@
+includes:
+	- vendor/jangregor/phpstan-prophecy/extension.neon
 parameters:
     checkMissingIterableValueType: false
     inferPrivatePropertyTypeFromConstructor: true

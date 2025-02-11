@@ -1,0 +1,34 @@
+property:
+  code:
+    unique: ~
+  type:
+    in_array:
+      options:
+        - pim_catalog_textarea
+        - pim_catalog_number
+        - pim_catalog_metric
+        - pim_catalog_simpleselect
+        - pim_catalog_text
+        - pim_catalog_image
+        - pim_catalog_multiselect
+        - pim_catalog_boolean
+        - pim_catalog_price_collection
+        - pim_catalog_date
+        - pim_catalog_file
+        - pim_catalog_identifier
+
+        - pim_reference_data_simpleselect
+        - pim_reference_data_multiselect
+
+  max_characters:
+    is_integer: ~
+  max_file_size:
+    is_integer: ~
+  minimum_input_length:
+    is_integer: ~
+  negative_allowed:
+    is_boolean: ~
+  number_max:
+    is_integer: ~
+  number_min:
+    is_integer: ~

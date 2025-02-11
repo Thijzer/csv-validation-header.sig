@@ -1,0 +1,21 @@
+property:
+  username:
+    unique:
+  email:
+    unique:
+  catalog_default_locale:
+    reference_exist:
+      file: enabled_locales
+      id: code
+  user_default_locale:
+    reference_exist:
+      file: enabled_locales
+      id: code
+  catalog_default_scope:
+    reference_exist:
+      file: channels
+      id: code
+  default_category_tree:
+    reference_exist:
+      file: categories
+      id: code

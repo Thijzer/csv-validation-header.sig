@@ -2,8 +2,17 @@
 
 namespace Misery\Component\Modifier;
 
+use Induxx\Component\HotFolder\Finder\FileNameValidator;
 use Misery\Component\Common\Modifier\CellModifier;
+use Misery\Component\Common\Sanitizer\FileNameSanitizer;
 
+/**
+ * Class SnakeCaseModifier
+ * @package Misery\Component\Modifier
+ *
+ * value response may contain only letters, numbers and underscores
+ * value is unrecoverable after modification
+ */
 class SnakeCaseModifier implements CellModifier
 {
     public const NAME = 'snake_case';
@@ -17,9 +26,14 @@ class SnakeCaseModifier implements CellModifier
     {
         $delimiter = '_';
 
-        if (!ctype_lower($value)) {
-            $value = preg_replace('/\s+/u', '', ucwords($value));
-            $value = mb_strtolower(preg_replace('/(.)(?=[A-Z])/u', '$1'.$delimiter, $value), 'UTF-8');
+        if (false === ctype_lower($value)) {
+            $value = (string) \preg_replace('/\s+/u', '', \ucwords($value));
+            $value = (string) \mb_strtolower(\preg_replace(
+                    '/(.)(?=[A-Z])/u',
+                    '$1' . $delimiter,
+                    $value
+                ) ?? '');
+
         }
 
         return $value;

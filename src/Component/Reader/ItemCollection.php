@@ -6,10 +6,6 @@ use Misery\Component\Common\Cursor\CursorInterface;
 
 class ItemCollection implements CursorInterface
 {
-    public const DELIMITER = ';';
-    public const ENCLOSURE = '"';
-    public const ESCAPE = '\\';
-
     /** @var int */
     private $position = 0;
     /** @var array */
@@ -22,6 +18,14 @@ class ItemCollection implements CursorInterface
         // array_values removes any position keys
         $this->items = $items;
         $this->keys = array_keys($items);
+    }
+
+    public function add(array $items)
+    {
+        foreach ($items as $key => $value) {
+            $this->items[$key] = $value;
+        }
+        $this->keys = array_keys($this->items);
     }
 
     /**
@@ -59,7 +63,7 @@ class ItemCollection implements CursorInterface
     /**
      * {@inheritDoc}
      */
-    public function current()
+    public function current(): mixed
     {
         return current($this->items) ?? $this->valid();
     }
@@ -76,7 +80,7 @@ class ItemCollection implements CursorInterface
     /**
      * {@inheritDoc}
      */
-    public function key()
+    public function key(): mixed
     {
         return $this->keys[$this->position] ?? $this->position;
     }
@@ -140,5 +144,10 @@ class ItemCollection implements CursorInterface
     public function count(): int
     {
         return \count($this->items);
+    }
+
+    public function clear(): void
+    {
+        $this->items = [];
     }
 }

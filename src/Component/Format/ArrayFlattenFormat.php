@@ -11,7 +11,7 @@ class ArrayFlattenFormat implements ArrayFormat, OptionsInterface
 {
     use OptionsTrait;
 
-    public const NAME = 'unflatten';
+    public const NAME = 'flatten';
 
     /** @var array */
     private $options = [
@@ -21,12 +21,12 @@ class ArrayFlattenFormat implements ArrayFormat, OptionsInterface
     /** @inheritDoc */
     public function format(array $item): array
     {
-        return ArrayFunctions::unflatten($item, $this->options['separator']);
+        return ArrayFunctions::flatten($item, $this->options['separator']);
     }
 
     /** @inheritDoc */
     public function reverseFormat($value): array
     {
-        return ArrayFunctions::flatten($value, $this->options['separator']);
+        return ArrayFunctions::unflatten($value, $this->options['separator']);
     }
 }

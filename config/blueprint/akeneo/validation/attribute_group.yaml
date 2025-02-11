@@ -1,0 +1,6 @@
+property:
+  code:
+    unique: ~
+  sort_order:
+    required: ~
+    is_integer: ~

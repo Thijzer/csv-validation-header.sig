@@ -1,0 +1,13 @@
+pipeline:
+  input:
+    http:
+      type: rest_api
+      account: '%akeneo_read_connection%'
+      endpoint: reference-entities
+      method: GET
+      identifier_filter_list: ['%endpoint%']
+
+  output:
+    writer:
+      type: jsonl
+      filename: 'akeneo_reference-entities_%endpoint%.jsonl'

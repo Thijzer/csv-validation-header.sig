@@ -21,7 +21,7 @@ class CsvWriterTest extends TestCase
 
     public function test_parse_csv_file(): void
     {
-        $filename = __DIR__ . '/../../examples/new_users.csv';
+        $filename = __DIR__ . '/../../examples/STD_OUT';
         $writer = new CsvWriter($filename);
 
         foreach ($this->items as $item) {
@@ -38,6 +38,6 @@ class CsvWriterTest extends TestCase
 
         $this->assertSame($this->items[0], $parser->current());
 
-        unlink($filename);
+        $writer->clear();
     }
 }

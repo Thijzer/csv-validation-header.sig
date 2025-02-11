@@ -1,0 +1,16 @@
+sources:
+  - '%workpath%/akeneo_%endpoint%.csv'
+
+pipeline:
+  input:
+    reader:
+      type: csv
+      filename: '%workpath%/akeneo_%endpoint%.csv'
+      converter: 'akeneo/%endpoint%/csv'
+  output:
+    http:
+      type: rest_api
+      account: '%akeneo_write_connection%'
+      endpoint: '%endpoint%'
+      method: MULTI_PATCH
+      converter: 'akeneo/%endpoint%/api'

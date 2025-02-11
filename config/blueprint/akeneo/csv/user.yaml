@@ -1,0 +1,36 @@
+encode:
+  username:
+    string: ~
+  first_name:
+    string: ~
+  last_name:
+    string: ~
+  email:
+    string: ~
+  password:
+    string: ~
+  catalog_default_locale:
+    string: ~
+  user_default_locale:
+    string: ~
+  catalog_default_scope:
+    string: ~
+  default_category_tree:
+    string: ~
+  roles:
+    list: ~
+  enabled:
+    boolean: ~
+
+parse:
+  type: csv
+  unflatten:
+    separator: '-'
+  nullify: ~
+  reference: username
+  format:
+    delimiter: ';'
+    enclosure: '"'
+
+validations:
+  include: 'validation/user.yaml'

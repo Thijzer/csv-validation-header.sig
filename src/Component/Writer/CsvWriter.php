@@ -2,40 +2,85 @@
 
 namespace Misery\Component\Writer;
 
-class CsvWriter
+use Assert\Assert;
+use Assert\Assertion;
+
+class CsvWriter implements ItemWriterInterface
 {
     public const DELIMITER = ';';
+    public const APPEND_MODE = 'ab+';
+    public const WRITE_MODE = 'wb+';
 
-    /** @var string */
     private $delimiter;
-    /** @var string */
     private $filename;
-    /** @var resource */
     private $handle;
-    /** @var bool */
     private $allowHeaders;
+
+    private static $format = [
+        'delimiter' => self::DELIMITER,
+        'mode' => self::WRITE_MODE,
+        'allow_headers' => true,
+    ];
 
     public function __construct(
         string $filename,
         string $delimiter = self::DELIMITER,
+        string $mode = self::WRITE_MODE,
         bool $allowHeaders = true
     ) {
+        #Assertion::writeable($filename);
+
         $this->filename = $filename;
         $this->delimiter = $delimiter;
         $this->allowHeaders = $allowHeaders;
-        $this->handle = fopen($this->filename, 'wb+');
+        $this->handle = fopen($this->filename, $mode);
+
+        Assertion::isResource($this->handle);
     }
 
-    public function write(array $row): void
+    public static function createFromArray(array $setup): CsvWriter
     {
-        $this->setHeader(array_keys($row));
+        Assert::that($setup)->keyIsset('filename');
+        Assert::that($setup['filename'])->notEmpty();
 
-        fputcsv($this->handle, array_values($row), $this->delimiter);
+        $format = array_merge(self::$format, $setup['format'] ?? []);
+        Assert::that($format['allow_headers'])->boolean();
+        Assert::that($format['delimiter'])->maxLength(1);
+        Assert::that($format['mode'])->string();
+
+        $format['delimiter'] = $setup['delimiter'] ?? $format['delimiter'];
+
+        $literalModes = [
+            'write' => self::WRITE_MODE,
+            'append' => self::APPEND_MODE,
+        ];
+        $format['mode'] = $literalModes[$format['mode']] ?? $format['mode'];
+        Assert::that($format['mode'])->inArray([self::WRITE_MODE, self::APPEND_MODE]);
+
+        if ($format['mode'] === self::APPEND_MODE) {
+            $format['allow_headers'] = false;
+        }
+
+        return new self(
+            $setup['filename'],
+            $format['delimiter'],
+            $format['mode'],
+            $format['allow_headers']
+        );
+    }
+
+    public function write(array $data): void
+    {
+        $this->setHeader(array_keys($data));
+
+        @fputcsv($this->handle, array_values($data), $this->delimiter);
     }
 
     public function close(): void
     {
-        fclose($this->handle);
+        if(is_resource($this->handle)) {
+            @fclose($this->handle);
+        }
     }
 
     public function clear(): void

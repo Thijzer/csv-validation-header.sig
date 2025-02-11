@@ -1,0 +1,11 @@
+pipeline:
+  input:
+    http:
+      type: rest_api
+      account: '%akeneo_read_connection%'
+      endpoint: '%endpoint%'
+      method: GET
+  output:
+    writer:
+      type: jsonl
+      filename: 'akeneo_%endpoint%.jsonl'

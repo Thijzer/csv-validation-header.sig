@@ -1,3 +1,8 @@
+/bin/
+!/bin/docker/composer
+!/bin/docker/php
 /vendor/
 .phpunit.result.cache
-/examples/tmp/*
+/examples/*
+/var/*
+composer.lock

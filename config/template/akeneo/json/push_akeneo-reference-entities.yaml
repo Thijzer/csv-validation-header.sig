@@ -1,0 +1,16 @@
+sources:
+  - '%workpath%/akeneo_reference-entities_%endpoint%.jsonl'
+
+pipeline:
+  input:
+    reader:
+      type: jsonl
+      filename: '%workpath%/akeneo_reference-entities_%endpoint%.jsonl'
+      converter: 'akeneo/reference_entities/csv'
+  output:
+    http:
+      type: rest_api
+      account: '%akeneo_write_connection%'
+      endpoint: reference-entities
+      method: PATCH
+      converter: 'akeneo/reference_entities/api'

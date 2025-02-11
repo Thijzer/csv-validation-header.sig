@@ -1,0 +1,18 @@
+encode:
+  code:
+    string: ~
+  currencies:
+    list: ~
+
+parse:
+  type: csv
+  unflatten:
+    separator: '-'
+  nullify: ~
+  reference: code
+  format:
+    delimiter: ';'
+    enclosure: '"'
+
+validations:
+  include: 'validation/channel.yaml'

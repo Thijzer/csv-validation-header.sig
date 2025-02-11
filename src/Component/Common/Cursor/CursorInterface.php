@@ -16,4 +16,6 @@ interface CursorInterface extends \SeekableIterator, \Countable
      * @return \Generator
      */
     public function getIterator(): \Generator;
+
+    public function clear(): void;
 }
